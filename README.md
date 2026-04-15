@@ -1,6 +1,27 @@
 # relayfile-cli
 
-`relayfile-cli` is a small TypeScript library for running external CLI commands, capturing stdout/stderr/exit codes, and promoting JSON stdout into a structured artifact. It is intended as the CLI-execution substrate for RelayFile-adjacent workflows without pulling server, adapter, or provider concerns into the package.
+`relayfile-cli` is the CLI-execution substrate for the RelayFile ecosystem.
+
+Where core `relayfile` turns APIs into files, `relayfile-cli` turns external CLI tools into structured artifacts that can later be mapped into files or other RelayFile-adjacent outputs.
+
+That makes it useful for workflows where the best retrieval or execution surface is a real vendor/tool CLI rather than direct HTTP calls. Instead of scattering shell scripts everywhere, `relayfile-cli` provides a bounded, testable way to:
+- run external CLI commands
+- capture stdout, stderr, exit codes, and timing
+- promote JSON stdout into structured artifacts
+- form the basis for later file-materialization flows
+
+## How it fits in the RelayFile ecosystem
+
+- **core `relayfile`** owns the filesystem abstraction, server/runtime, mount/sync, and API contracts
+- **`relayfile-adapters`** own webhook normalization, path mapping, and writeback rules
+- **`relayfile-providers`** own OAuth, token handling, and API proxy concerns
+- **`relayfile-cli`** owns external CLI execution and structured artifact capture
+
+A useful mental model is:
+- `relayfile` makes external systems look like files
+- `relayfile-cli` makes external CLIs produce clean artifacts that can later become files
+
+That second part matters because many integrations are easiest to access through an existing CLI. In the same way `relayfile-adapters` can pull normalized data through provider-backed flows and sync it down into files, `relayfile-cli` can become the clean execution layer for CLI-backed retrieval whose output is then mapped or materialized in a file-oriented way.
 
 ## Install
 
