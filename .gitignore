@@ -4,3 +4,6 @@ dist/
 *.tsbuildinfo
 .DS_Store
 *.log
+
+.agent-relay/
+.relay/
