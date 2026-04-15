@@ -37,6 +37,12 @@ async function main() {
         'sed -n "1,220p" README.md',
         'echo "" && echo "---REPO BOUNDARY---"',
         'sed -n "1,260p" REPO_BOUNDARY.md',
+        'echo "" && echo "---RELAYFILE CORE README---"',
+        'sed -n "1,220p" ../relayfile/README.md || true',
+        'echo "" && echo "---RELAYFILE PROVIDERS TREE---"',
+        'find ../relayfile-providers -maxdepth 2 -type f | sort | sed -n "1,160p" || true',
+        'echo "" && echo "---RELAYFILE ADAPTERS TREE---"',
+        'find ../relayfile-adapters -maxdepth 2 -type f | sort | sed -n "1,160p" || true',
       ].join(' && '),
       captureOutput: true,
       failOnError: true,
@@ -45,7 +51,7 @@ async function main() {
     .step('define-repo-boundary', {
       agent: 'lead-claude',
       dependsOn: ['read-bootstrap-context'],
-      task: `Define the initial standalone relayfile-cli repo boundary and first implementation target.\n\n{{steps.read-bootstrap-context.output}}\n\nWrite:\n- docs/repo-boundary.md\n- docs/first-proof-direction.md\n- docs/repo-boundary-review-verdict.md\n\nRequirements:\n1. justify the split from relayfile clearly\n2. define what belongs here vs in core relayfile\n3. define the first bounded 80-to-100 proof target\n4. keep it mergeable and honest\n\nEnd with RELAYFILE_CLI_REPO_BOUNDARY_READY.`,
+      task: `Define the initial standalone relayfile-cli repo boundary and first implementation target.\n\n{{steps.read-bootstrap-context.output}}\n\nWrite:\n- docs/repo-boundary.md\n- docs/first-proof-direction.md\n- docs/repo-boundary-review-verdict.md\n\nRequirements:\n1. justify the split from relayfile clearly\n2. define what belongs here vs in core relayfile\n3. explicitly account for relayfile-providers and relayfile-adapters so the split fits the wider relayfile ecosystem\n4. define the first bounded 80-to-100 proof target\n4. keep it mergeable and honest\n\nEnd with RELAYFILE_CLI_REPO_BOUNDARY_READY.`,
       verification: { type: 'file_exists', value: 'docs/repo-boundary.md' },
     })
 
