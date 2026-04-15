@@ -1,0 +1,12 @@
+{
+  "name": "relayfile-cli",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Standalone CLI substrate for RelayFile-adjacent command execution and artifact capture",
+  "scripts": {
+    "workflow": "agent-relay run"
+  },
+  "dependencies": {
+    "@agent-relay/sdk": "latest"
+  }
+}
