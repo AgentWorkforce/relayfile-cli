@@ -2,14 +2,6 @@
 
 `relayfile-cli` is a small TypeScript library for running external CLI commands, capturing stdout/stderr/exit codes, and promoting JSON stdout into a structured artifact. It is intended as the CLI-execution substrate for RelayFile-adjacent workflows without pulling server, adapter, or provider concerns into the package.
 
-## Status
-
-This repo is now source-shareable, but it is not yet positioned as a published npm package.
-
-- The package stays `"private": true` on purpose.
-- No canonical public repository URL is configured yet, so the `repository` metadata is intentionally left unset.
-- The public-facing install path today is cloning the repo and building locally.
-
 ## Install
 
 ### From a local checkout
