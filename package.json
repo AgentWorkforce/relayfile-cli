@@ -3,6 +3,17 @@
   "private": true,
   "version": "0.1.0",
   "description": "Standalone CLI substrate for RelayFile-adjacent command execution and artifact capture",
+  "license": "MIT",
+  "author": "Khaliq Gant",
+  "keywords": [
+    "relayfile",
+    "cli",
+    "command-execution",
+    "artifact-capture"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -11,11 +22,7 @@
   "scripts": {
     "build": "tsc",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit",
-    "workflow": "agent-relay run"
-  },
-  "dependencies": {
-    "@agent-relay/sdk": "latest"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^20.19.22",
